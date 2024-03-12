@@ -5,7 +5,7 @@
 
 const $ = new Env('助力码提交');
 const helpcodes = ['字符串1', '字符串2', '字符串3'];
-const count = 0;
+let count = 0;
 $.autoUpload = true;	//自动上传
 $.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
 $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
