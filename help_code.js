@@ -1,14 +1,15 @@
 /*
-脚本名称：助力码提交(自用)
+脚本名称：助力码自动提交(自用)
 更新时间：2024-01-01
 */
 
 const $ = new Env('助力码提交');
-const helpcodes = ['2222222222', 'helloworld'];
+const helpcodes = ['/pet MTAxODc2NTEzNTAwMDAwMDAwMzYyMjkwMw==&MTAxODc2NTEzMTAwMDAwMDAxNjkxMzc5Nw==', '/bean 7u7ecywxuhf2obantg63jnod6m&qxihsx7a3yame5qoa2gl2337oy', '/ddfactory T010_awqHE1GqACjVWnYaS5kRrbA&T012aGDpl5WWLehRCjVWnYaS5kRrbA', '/health T010_awqHE1GqACjVfnoaW5kRrbA&T012aGDpl5WWLehRCjVfnoaW5kRrbA', '/city 47miBf9TOygPY16IW6vR&dnVhjieDvtjFL17EBpfUh-Y'];
 let count = 0;
 $.autoUpload = true;	//自动上传
 $.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
-$.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
+//$.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
+$.chat_ids = ['@chriszhuli_bot'];
 
 !(async () => {
 	$.success = false;
@@ -50,7 +51,8 @@ function submitHelpCode(code, chat_id) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: `chat_id=${chat_id}&text=${code}&disable_web_page_preview=true`,
+      body: `chat_id=${chat_id}&text=${code}`,
+      //body: `chat_id=${chat_id}&text=${code}&disable_web_page_preview=true`,
     };
     $.post(opts, (err, resp, data) => {
       try {
@@ -58,7 +60,7 @@ function submitHelpCode(code, chat_id) {
           $.log(`${JSON.stringify(err)}\n`);
           $.success = false;
         } else {
-	  $.log(data);
+	  // $.log(data);
           data = JSON.parse(data);
           if (data.ok) {
             $.subt = `🎉 助力码提交成功。`;
