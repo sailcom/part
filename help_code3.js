@@ -4,7 +4,7 @@
 */
 
 const $ = new Env('助力码提交');
-const helpcodes = ['xxxxxx', '2222222222', 'helloworld'];
+const helpcodes = ['2222222222', 'helloworld'];
 let count = 0;
 $.autoUpload = true;	//自动上传
 $.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '我是token';
@@ -16,9 +16,7 @@ $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 		if (helpcodes.length > 0 && $.chat_ids.length > 0 && $.bot_token) {
 			for (const helpcode of helpcodes) {
 				for (const chat_id of $.chat_ids) {
-					$.log('Using Telegram API...\n');
-					$.log('token: ' + $.bot_token + ' \n');
-					$.log('chat: ' + $.chat_id + ' \n');
+					$.log('提交中...\n');
 					await submitHelpCode(helpcode, chat_id);
 					count++;
 				}
@@ -57,6 +55,7 @@ function submitHelpCode(code, chat_id) {
           $.log(`${JSON.stringify(err)}\n`);
           $.success = false;
         } else {
+	  $.log(data);
           data = JSON.parse(data);
           if (data.ok) {
             $.subt = `🎉 助力码提交成功。`;
