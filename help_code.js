@@ -7,7 +7,7 @@ const $ = new Env('助力码提交');
 const helpcodes = ['字符串1', '字符串2', '字符串3'];
 let count = 0;
 $.autoUpload = true;	//自动上传
-$.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
+$.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '我是token';
 $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 
 !(async () => {
@@ -61,7 +61,7 @@ function submitHelpCode(code, chat_id) {
             $.msg($.subt, code);
             $.success = true;
           } else if (data.error_code === 400) {
-            $.subt = '⚠️ Telegram bot 无发送消息权限。';
+            $.subt = '⚠️ Telegram bot 无发送消息权限,token：${$.bot_token}';
             $.msg($.subt, code);
             $.success = false;
           } else if (data.error_code === 401) {
