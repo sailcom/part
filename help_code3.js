@@ -7,13 +7,16 @@ const $ = new Env('助力码提交');
 const helpcodes = ['2222222222', 'helloworld'];
 let count = 0;
 $.autoUpload = true;	//自动上传
-$.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '我是token';
+$.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
 $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 
 !(async () => {
 	$.success = false;
 	if ($.autoUpload !== "false") {  // 自动上传
 		if (helpcodes.length > 0 && $.chat_ids.length > 0 && $.bot_token) {
+			if (typeof ($.chat_ids) != 'object') {
+				$.chat_ids = JSON.parse($.chat_ids);
+			}
 			for (const helpcode of helpcodes) {
 				for (const chat_id of $.chat_ids) {
 					$.log('提交中...\n');
