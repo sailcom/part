@@ -10,11 +10,6 @@ $.autoUpload = true;	//自动上传
 $.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
 $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 
-//const WSKEY = $request.headers['Cookie'] || $request.headers['cookie'];
-//const respBody = $.toObj($response.body);
-//const pin = respBody.userInfoSns.unickName;
-//const key = WSKEY.match(/wskey=([^=;]+?);/)[1];
-
 !(async () => {
 	$.success = false;
 	if ($.autoUpload !== "false") {  // 自动上传
@@ -42,49 +37,6 @@ $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 		$.msg('⚠️ 暂不提交助力码。', $.chat_ids);
 		$.subt = `⚠️ 暂不提交助力码。`;
 	}
-
-/*
-  const cookie = `wskey=${key};pt_pin=${pin};`;
-  const userName = pin;
-  const decodeName = decodeURIComponent(userName);
-  let cookiesData = JSON.parse($.getdata('wskeyList') || '[]');
-  let updateIndex;
-  const existCookie = cookiesData.find((item, index) => {
-    const ck = item.cookie;
-    const Account = ck ? ck.match(/pin=.+?;/) ? ck.match(/pin=(.+?);/)[1] : null : null;
-    const verify = userName === Account;
-    if (verify) {
-      updateIndex = index;
-      if (ck !== cookie) {
-        $.needUpload = true;
-      }
-    }
-    return verify;
-  });
-  if (existCookie) {
-    cookiesData[updateIndex].cookie = cookie;
-  } else {
-    cookiesData.push({ userName: decodeName, cookie: cookie, });
-    $.needUpload = true;
-  }
-
-  if ($.autoUpload !== "false") {  // 自动上传
-    if ($.needUpload) {
-      if (typeof ($.chat_ids) != 'object') {
-        $.chat_ids = JSON.parse($.chat_ids);
-      }
-
-    } else {
-      $.msg('⚠️ 暂不提交。', cookie);
-      $.subt = `⚠️ 【${respBody?.userInfoSns?.petName || '提示'}】暂不提交助力码。`;
-    }
-  } else {  // 本地使用
-    $.subt = '🎉 WSKEY 获取成功。';
-    $.msg($.subt, cookie);
-  }
-  return;
-*/
-
 })().catch((e) => $.logErr(e)).finally(() => $.done());
 
 
