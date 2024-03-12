@@ -5,7 +5,7 @@
 
 const $ = new Env('助力码提交');
 const helpcodes = ['/pet MTAxODc2NTEzNTAwMDAwMDAwMzYyMjkwMw==&MTAxODc2NTEzMTAwMDAwMDAxNjkxMzc5Nw==', '/bean 7u7ecywxuhf2obantg63jnod6m&qxihsx7a3yame5qoa2gl2337oy', '/ddfactory T010_awqHE1GqACjVWnYaS5kRrbA&T012aGDpl5WWLehRCjVWnYaS5kRrbA', '/health T010_awqHE1GqACjVfnoaW5kRrbA&T012aGDpl5WWLehRCjVfnoaW5kRrbA', '/city 47miBf9TOygPY16IW6vR&dnVhjieDvtjFL17EBpfUh-Y'];
-$.chat_ids = ['chriszhuli_bot'];
+$.chat_ids = ['@chriszhuli_bot'];
 //$.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 $.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
 $.autoUpload = true;	//自动上传
@@ -20,7 +20,7 @@ let count = 0;
 			}
 			for (const helpcode of helpcodes) {
 				for (const chat_id of $.chat_ids) {
-					$.log('提交中...\n');
+					$.log('向' + chat_id + '提交中...\n');
 					await submitHelpCode(helpcode, chat_id);
 					count++;
 				}
@@ -68,7 +68,6 @@ function submitHelpCode(code, chat_id) {
             $.success = true;
           } else if (data.error_code === 400) {
             $.subt = '⚠️ Telegram bot 无发送消息权限！';
-	    $.subt = '400错误:' + body;
             $.msg($.subt, code);
             $.success = false;
           } else if (data.error_code === 401) {
