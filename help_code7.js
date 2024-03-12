@@ -60,7 +60,7 @@ function submitHelpCode(code, chat_id) {
           $.log(`${JSON.stringify(err)}\n`);
           $.success = false;
         } else {
-	  // $.log(data);
+	  $.log(data);
           data = JSON.parse(data);
           if (data.ok) {
             $.subt = `🎉 助力码提交成功。`;
@@ -68,6 +68,7 @@ function submitHelpCode(code, chat_id) {
             $.success = true;
           } else if (data.error_code === 400) {
             $.subt = '⚠️ Telegram bot 无发送消息权限！';
+	    $.subt = '400错误:' + body;
             $.msg($.subt, code);
             $.success = false;
           } else if (data.error_code === 401) {
