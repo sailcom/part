@@ -5,11 +5,11 @@
 
 const $ = new Env('助力码提交');
 const helpcodes = ['/pet MTAxODc2NTEzNTAwMDAwMDAwMzYyMjkwMw==&MTAxODc2NTEzMTAwMDAwMDAxNjkxMzc5Nw==', '/bean 7u7ecywxuhf2obantg63jnod6m&qxihsx7a3yame5qoa2gl2337oy', '/ddfactory T010_awqHE1GqACjVWnYaS5kRrbA&T012aGDpl5WWLehRCjVWnYaS5kRrbA', '/health T010_awqHE1GqACjVfnoaW5kRrbA&T012aGDpl5WWLehRCjVfnoaW5kRrbA', '/city 47miBf9TOygPY16IW6vR&dnVhjieDvtjFL17EBpfUh-Y'];
-let count = 0;
-$.autoUpload = true;	//自动上传
-$.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
-//$.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 $.chat_ids = ['@chriszhuli_bot'];
+//$.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
+$.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '';
+$.autoUpload = true;	//自动上传
+let count = 0;
 
 !(async () => {
 	$.success = false;
