@@ -17,8 +17,8 @@ $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 			for (const helpcode of helpcodes) {
 				for (const chat_id of $.chat_ids) {
 					$.log('Using Telegram API...\n');
-					$.log('token: ${$.bot_token} \n');
-					$.log('chat: ${$.chat_id} \n');
+					$.log('token: ' + $.bot_token + ' \n');
+					$.log('chat: ' + $.chat_id + ' \n');
 					await submitHelpCode(helpcode, chat_id);
 					count++;
 				}
@@ -28,7 +28,7 @@ $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 			}
 		}
 		if ($.success) {
-			$.subt = '⚠️ 已成功提交${count}个助力码！';
+			$.subt = '⚠️ 已成功提交' + count + '个助力码！';
 			$.msg($.subt, count);
 		} else {
 			$.subt = '⚠️ 助力码提交失败。';
