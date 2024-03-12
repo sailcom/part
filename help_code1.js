@@ -4,7 +4,7 @@
 */
 
 const $ = new Env('助力码提交');
-const helpcodes = ['字符串1', '字符串2', '字符串3'];
+const helpcodes = ['xxxxxx', '2222222222', 'helloworld'];
 let count = 0;
 $.autoUpload = true;	//自动上传
 $.bot_token = $.getdata('WSKEY_TG_BOT_TOKEN') || '我是token';
@@ -16,7 +16,9 @@ $.chat_ids = $.getdata('WSKEY_TG_USER_ID') || [];
 		if (helpcodes.length > 0 && $.chat_ids.length > 0 && $.bot_token) {
 			for (const helpcode of helpcodes) {
 				for (const chat_id of $.chat_ids) {
-					$.log('Using Telegram API...\n')
+					$.log('Using Telegram API...\n');
+					$.log('token: ${$.bot_token} \n');
+					$.log('chat: ${$.chat_id} \n');
 					await submitHelpCode(helpcode, chat_id);
 					count++;
 				}
@@ -61,7 +63,7 @@ function submitHelpCode(code, chat_id) {
             $.msg($.subt, code);
             $.success = true;
           } else if (data.error_code === 400) {
-            $.subt = '⚠️ Telegram bot 无发送消息权限,token：${$.bot_token}';
+            $.subt = '⚠️ Telegram bot 无发送消息权限！';
             $.msg($.subt, code);
             $.success = false;
           } else if (data.error_code === 401) {
