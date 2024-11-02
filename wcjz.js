@@ -6,7 +6,7 @@ guding = {
     "response": {
       "userInfo": {
         "avatarUrl": "https:\/\/raw\.githubusercontent\.com\/Guding88\/iCon\/main\/png\/Guding\.png",
-        "nickName": "sailcom"
+        "nickName": "sail666"
       },
       "uid":1498214,
       "vipInfo": {
