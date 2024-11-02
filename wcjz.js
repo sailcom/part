@@ -1,4 +1,8 @@
-var guding = JSON.parse($response.body);
+var wc = JSON.parse($response.body);
+wc.data.response.userInfo.nickName = "sail666";
+$done({body: JSON.stringify(wc)}); 
+
+/*
 guding = {
   "code": 0,
   "data": {
@@ -32,3 +36,4 @@ guding = {
   "needRetry": null
 }
 $done({ body: JSON.stringify(guding) });
+*/
