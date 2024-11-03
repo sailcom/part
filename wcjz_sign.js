@@ -19,7 +19,8 @@ newwc.vipInfo = {
     "freeSendAdFreeVipEnable" : 0,
     "vipType" : 2,
     "expireDaysDays" : 99999,
-    "freeSendVipEnable" : 0
+    "freeSendVipEnable" : 0,
+    "matchVipTrial" : true
   };
 
 // 将修改后的对象转换回 JSON 字符串
